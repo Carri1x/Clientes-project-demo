@@ -1,21 +1,13 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { Login } from './components/login/login';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [
-    RouterOutlet,
-    MatInputModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    Login
-  ],
+  standalone: true,
+  imports: [CommonModule, RouterOutlet],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrl: './app.css',
 })
 export class App {
   protected title = 'clientes-web';

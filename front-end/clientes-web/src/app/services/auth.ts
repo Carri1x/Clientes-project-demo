@@ -7,12 +7,13 @@ import { UserModel } from '../models/user-model';
   providedIn: 'root'
 })
 export class Auth {
-  private apiUrl = 'http://localhost:5432/api/auth';
+  private apiUrl = 'http://localhost:8080/auth';
 
   constructor(private http: HttpClient) { }
 
-  login(user: UserModel): Observable<any> {
-    return this.http.post(`${this.apiUrl}/login`, user);
+  login(email: string, password: string): Observable<any> {
+    const body = {email, password};
+    return this.http.post(`${this.apiUrl}/login`, body);
   }
 
   logout(): Observable<any> {
@@ -20,9 +21,7 @@ export class Auth {
   }
 
   register(user: UserModel): Observable<any> {
-    return this.http.post(`${this.apiUrl}/register`, user);
+    return this.http.post(`${this.apiUrl}/registrar`, user);
   }
-  getUserProfile(): Observable<UserModel> {
-    return this.http.get<UserModel>(`${this.apiUrl}/profile`);
-  }
+
 }

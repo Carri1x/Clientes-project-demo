@@ -206,3 +206,33 @@ Código	Significado	Uso común
 - 502 Bad Gateway	El servidor actuó como proxy y recibió una respuesta inválida.	Problemas entre servidores.
 - 503 Service Unavailable	Servidor sobrecargado o en mantenimiento.	Downtime o carga excesiva.
 - 504 Gateway Timeout	El servidor no recibió respuesta a tiempo de otro servidor.	Problemas en la cadena de servidores.
+
+## Caso de que el usuario ya esté registrado y haya intentado registrarse
+    1. En vez de devolver un objeto `User` con un mensaje en el campo nombre, lo ideal es devolver un objeto de error estructurado, por ejemplo:
+    ```
+    // Puedes crear una clase simple para respuestas de error
+        public class ApiError {
+            private String message;
+            public ApiError(String message) { this.message = message; }
+            public String getMessage() { return message; }
+        }
+    ```
+    2. *Y en el controlador*:
+    ```
+    if(userService.emailExists(user.getEmail())){
+        ApiError error = new ApiError("El email ya está registrado.");
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(error);
+    }
+    ```
+    3. *En el frontend Angular*
+    Cuando recibas un error con código 409, puedes mostrar el mensaje al usuario:
+    ```
+    this.authService.register(user).subscribe({
+        next: (res) => { /* registro exitoso */ },
+        error: (err) => {
+            if (err.status === 409) {
+                alert(err.error.message); // Muestra el mensaje del backend
+            }
+        }
+    });
+    ```
