@@ -1,0 +1,31 @@
+<div id="section-agregar">
+    <h3>Sección agregar cliente: </h3>
+    <button matButton routerLink="/home/agregar-cliente">
+        <!--Importantísimo me estaba pasando que no me funcionaba el botón no me llevaba a la ruta 
+        estaba haciendo esto dentro del routerLink -> routerLink="home/agregar-cliente" al no tener la barrita ("/")
+        delante  me estaba llevando a esta ruta /home/clientes/home/agregar-cliente por eso es muy importante poner en routerLink siempre siempre 
+        la barrita delante NO EN CASO DE QUE QUIERAS SUMARLE A LA RUTA QUE ESTÁS LA RUTA QUE ESTÁ EN ROUTERLINK!!!!!1-->
+      <mat-icon>add</mat-icon>
+      Agregar Cliente
+    </button>
+  </div>
+<div class="clientes-container">
+  <mat-card *ngFor="let cliente of clientes">
+    <mat-card-header>
+      <mat-card-title>{{cliente.nombre}} {{cliente.apellido}}</mat-card-title>
+      <mat-card-subtitle>{{cliente.nickname}}</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <!-- Aquí puedes poner más datos del cliente -->
+      <p>Teléfono: {{cliente.telefono}}</p>
+      <p>Dirección email: {{cliente.email}}</p>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <!-- Botones opcionales -->
+      <button mat-button>Editar</button>
+      <button mat-button color="warn">Eliminar</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
