@@ -16,6 +16,10 @@ export class ClientesService {
   }
 
   crearCliente(cliente: ClienteModel): Observable<ClienteModel>{
-    return this.http.put<ClienteModel>(`${this.apiUrl}/add`,cliente);
+    return this.http.post<ClienteModel>(`${this.apiUrl}/add`,cliente);
+  }
+
+  eliminarCliente(id: number): Observable<boolean>{
+    return this.http.delete<boolean>(`${this.apiUrl}/delete/${id}`);  
   }
 }

@@ -23,14 +23,8 @@ import { CommonModule } from '@angular/common';
   styleUrl: './agregar-cliente.css'
 })
 export class AgregarCliente {
-  clienteForm: FormGroup;
-  cliente: ClienteModel = {
-    nickname: '',
-    nombre: '',
-    apellido: '',
-    email: '',
-    telefono: ''
-  };
+  clienteForm : FormGroup;
+  
 
   constructor(
     private clienteService: ClientesService,
@@ -58,9 +52,9 @@ export class AgregarCliente {
       },
       error: (err) => {
         if(err === '409'){
-          alert(`No se ha podido insertar al cliente ${this.cliente.nombre}`);
+          alert(`No se ha podido insertar al cliente ${this.clienteForm.value.nombre}`);
         }else{
-          alert(`Se ha producido un error al insertar el cliente ${err} ${this.clienteForm.value.nombre}`);
+          alert(`Se ha producido un error al insertar el cliente ${err.http} ${this.clienteForm.value.nombre}`);
         }
       }
     })

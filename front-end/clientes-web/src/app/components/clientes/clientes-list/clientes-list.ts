@@ -6,7 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule} from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
-
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -39,4 +39,22 @@ export class ClientesList implements OnInit {
       }
     });
   } 
+  eliminar(id: number){
+    this.clienteService.eliminarCliente(id).subscribe({
+      next: (res: boolean) => {
+        //Si el cliente ha sido eliminado correctamente de la base de datos eliminamos el cliente de la lista 
+        //previamente guardada
+        this.clientes = this.clientes.filter(cli => cli.id !== id);
+        if(res){
+          alert(`El cliente con id: ${id} ha sido eliminado correctemante`);
+        }else{
+          alert('No ha sido eliminado correctamente');
+        }
+      },
+      error: (err: any) => {
+        alert('Ha habido un error al eliminar el usuario'+err);
+      }
+    });
+  }
+
 }
