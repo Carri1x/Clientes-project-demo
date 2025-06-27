@@ -39,6 +39,7 @@ export class Login {
         //querré direccionar al usuario a otra página de la aplicacion DESCOMENTANDO LO QUE HAY COMENTANDO
         
         //this.router.navigate(['ruta-que-queramos-llevar']); ESTA RUTA TIENE QUE ESTAR DEFINIDA EN = app.routes.ts
+        
         alert(`Usuario ${this.user.nombre} registrado`);
       },
       error: (err) => {
