@@ -1,0 +1,29 @@
+<form [formGroup]="clienteForm" (ngSubmit)="agregar()" class="form-container">
+  <mat-form-field appearance="outline">
+    <mat-label>Nombre</mat-label>
+    <input matInput formControlName="nombre" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Apellido</mat-label>
+    <input matInput formControlName="apellido" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Email</mat-label>
+    <input matInput type="email" formControlName="email" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Teléfono</mat-label>
+    <input matInput type="tel" formControlName="telefono" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Nickname</mat-label>
+    <input matInput formControlName="nickname" />
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit">Agregar Cliente</button>
+</form>
+
