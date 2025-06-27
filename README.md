@@ -236,3 +236,46 @@ Código	Significado	Uso común
         }
     });
     ```
+---
+# Distribución del proyecto Angular de forma mantenible
+src/
+└── app/
+    ├── core/                  # Servicios singleton, guards, interceptors, config global
+    │   ├── services/
+    │   │   └── auth.service.ts
+    │   ├── guards/
+    │   │   └── auth.guard.ts
+    │   ├── interceptors/
+    │   │   └── token.interceptor.ts
+    │   └── core.module.ts
+    ├── shared/                # Componentes, pipes, directivas y modelos reutilizables
+    │   ├── components/
+    │   │   └── loading-spinner/
+    │   │       ├── loading-spinner.component.ts
+    │   │       └── loading-spinner.component.html
+    │   ├── models/
+    │   │   ├── user.model.ts
+    │   │   └── cliente.model.ts
+    │   ├── pipes/
+    │   │   └── capitalize.pipe.ts
+    │   └── shared.module.ts
+    ├── features/              # Cada dominio funcional tiene su propia carpeta
+    │   ├── clientes/
+    │   │   ├── clientes-list/
+    │   │   │   ├── clientes-list.component.ts
+    │   │   │   ├── clientes-list.component.html
+    │   │   │   └── clientes-list.component.css
+    │   │   ├── cliente-detail/
+    │   │   │   ├── cliente-detail.component.ts
+    │   │   │   ├── cliente-detail.component.html
+    │   │   │   └── cliente-detail.component.css
+    │   │   └── clientes-routing.module.ts
+    │   ├── login/
+    │   │   ├── login.component.ts
+    │   │   ├── login.component.html
+    │   │   └── login.component.css
+    │   └── ...otros features...
+    ├── app-routing.module.ts  # Rutas principales
+    ├── app.component.ts
+    ├── app.component.html
+    └── app.module.ts
