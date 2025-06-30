@@ -22,6 +22,8 @@ import { Auth } from '../../services/auth';
 })
 
 export class Login {
+  public variable: string= 'irenuca';
+
   user: UserModel = {
     nombre: '',
     apellido: '',

@@ -8,5 +8,5 @@ public interface IClienteRepository extends JpaRepository<Cliente, Long>{
     // No es necesario agregar métodos adicionales, JpaRepository ya proporciona
     // métodos CRUD básicos como save, findById, findAll, deleteById, etc.
     // Si se necesitan consultas personalizadas, se pueden agregar aquí.
-
+    
 }

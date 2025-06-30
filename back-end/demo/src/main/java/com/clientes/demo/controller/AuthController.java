@@ -32,7 +32,6 @@ public class AuthController {
         aun así me gustaría saber para que puedo usar ese HttpStatus y el usuario invalido no se si es buena prácica*/
     @PostMapping("/registrar")
     public ResponseEntity<User> registrar(@RequestBody User user){
-        System.out.println();
         /*
         Si el email no existe tiene puede crearse en la base de datos
         */

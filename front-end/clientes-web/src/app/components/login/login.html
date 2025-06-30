@@ -1,7 +1,7 @@
 <form (ngSubmit)="onRegister()" #registerForm="ngForm" class="register-form">
   <mat-form-field appearance="outline" class="full-width">
     <mat-label>Nombre</mat-label>
-    <input matInput type="text" name="nombre" [(ngModel)]="user.nombre" required />
+    <input matInput type="text" name="nombre" [placeholder]="variable" [(ngModel)]="user.nombre" required />
   </mat-form-field>
 
   <mat-form-field appearance="outline" class="full-width">
@@ -19,7 +19,7 @@
     <input matInput type="password" name="password" [(ngModel)]="user.password" required >
   </mat-form-field>
 
-  <button mat-raised-button color="primary" type="submit" [disabled]="registerForm.invalid">
+  <button mat-raised-button color="primary" type="submit"  [disabled]="registerForm.invalid">
     Registrar usuario
   </button>
 </form>
